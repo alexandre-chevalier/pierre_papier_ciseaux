@@ -44,9 +44,19 @@ def victory_one_game(gameplay, partie_player, partie_bot):
 
     
 
-def result():
-    print("votre resultat")
+def result(win_player,win_bot):
+    if win_player.count("V") == 3:
+        print("vous avez gagner")
+        return True
+    elif win_bot.count("V") == 3:
+        print("le bot a gagner")
+        return True
+    else:
+        print("personne n'a encore gagner")
+
+
     
+
 def main():
     manche_player = []
     manche_bot = []
@@ -57,9 +67,14 @@ def main():
 
         print(f"vous avez gagner {manche_player.count("V")} manche ")
         print(f"le bot a gagner {manche_bot.count("V")} manche ")
+        choix = result(manche_player, manche_bot)
 
-
-        print(gamers)
-
+        if choix == True: 
+            replay = input("voulez vous rejouer ? Y/N : ")
+            manche_player = []
+            manche_bot = []
+            
+            if replay == "N":
+                break
 
 main()
